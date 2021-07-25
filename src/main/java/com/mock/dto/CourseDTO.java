@@ -1,56 +1,34 @@
-package com.mock.entity;
+package com.mock.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
-import java.util.List;
 
-@Entity
-@Table(name = "course")
-public class Course {
+public class CourseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int course_id;
+    @NotEmpty(message = "Please Enter Title !")
     private String title;
+//    @NotEmpty(message = "Please Enter Title !")
     private String image;
+    @NotEmpty(message = "Please Enter Description !")
     private String description;
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
     private Date last_update;
+    @Min(4)
     private int number_question;
+    @Min(240)
     private int time_do;
     private int user_id;
     private int category_id;
+    private String category_name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", insertable = false, updatable = false)
-    private CourseCategory courseCategory;
-
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<UserEnroll> userEnrolls;
-
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Target> targets;
-
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<CourseDetail> courseDetails;
-
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Question> questions;
-
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Exam> exams;
-
-    public Course() {
+    public CourseDTO() {
     }
 
-    public Course(int course_id, String title, String image, String description, Date last_update, int number_question, int time_do, int user_id, int category_id) {
+    public CourseDTO(int course_id, String title, String image, String description, Date last_update, int number_question, int time_do, int user_id, int category_id, String category_name) {
         this.course_id = course_id;
         this.title = title;
         this.image = image;
@@ -60,6 +38,7 @@ public class Course {
         this.time_do = time_do;
         this.user_id = user_id;
         this.category_id = category_id;
+        this.category_name = category_name;
     }
 
     public int getCourse_id() {
@@ -132,5 +111,13 @@ public class Course {
 
     public void setCategory_id(int category_id) {
         this.category_id = category_id;
+    }
+
+    public String getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 }

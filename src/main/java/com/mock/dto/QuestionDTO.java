@@ -1,35 +1,28 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "question")
-public class Question {
+public class QuestionDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int question_id;
     private String question_content;
     private int course_id;
+    private List<AnswerDTO> listAns;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
-
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
-    private List<Answer> answers;
-
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
-    private List<ExamDetail> examDetails;
-
-    public Question() {
+    public QuestionDTO() {
     }
 
-    public Question(int question_id, String question_content, int course_id) {
+    public QuestionDTO(int question_id, String question_content, int course_id) {
         this.question_id = question_id;
         this.question_content = question_content;
         this.course_id = course_id;
+    }
+
+    public QuestionDTO(int question_id, String question_content, int course_id, List<AnswerDTO> listAns) {
+        this.question_id = question_id;
+        this.question_content = question_content;
+        this.course_id = course_id;
+        this.listAns = listAns;
     }
 
     public int getQuestion_id() {
@@ -54,5 +47,13 @@ public class Question {
 
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
+    }
+
+    public List<AnswerDTO> getListAns() {
+        return listAns;
+    }
+
+    public void setListAns(List<AnswerDTO> listAns) {
+        this.listAns = listAns;
     }
 }

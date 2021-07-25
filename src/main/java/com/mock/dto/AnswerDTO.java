@@ -1,26 +1,16 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
+public class AnswerDTO {
 
-@Entity
-@Table(name = "answer")
-public class Answer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ans_id;
     private String ans_content;
     private boolean is_right;
     private int question_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id", insertable = false, updatable = false)
-    private Question question;
-
-    public Answer() {
+    public AnswerDTO() {
     }
 
-    public Answer(int ans_id, String ans_content, boolean is_right, int question_id) {
+    public AnswerDTO(int ans_id, String ans_content, boolean is_right, int question_id) {
         this.ans_id = ans_id;
         this.ans_content = ans_content;
         this.is_right = is_right;

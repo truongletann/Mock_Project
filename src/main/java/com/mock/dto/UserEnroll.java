@@ -1,30 +1,13 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "user_enroll")
 public class UserEnroll {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_enroll_id;
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern="dd-MM-yyyy")
     private Date date_enroll;
     private int user_id;
     private int course_id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
 
     public UserEnroll() {
     }

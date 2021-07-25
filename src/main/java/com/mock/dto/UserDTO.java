@@ -1,14 +1,7 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
-import java.util.List;
+public class UserDTO {
 
-@Entity
-@Table(name = "user")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
     private String email;
     private String full_name;
@@ -18,24 +11,12 @@ public class User {
     private String address;
     private boolean status;
     private String role_id;
+    private String role_name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", insertable = false, updatable = false)
-    private Role role;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Course> courses;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<UserEnroll> userEnrolls;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Exam> exams;
-
-    public User() {
+    public UserDTO() {
     }
 
-    public User(int user_id, String email, String full_name, String password, String avatar, int phone, String address, boolean status, String role_id) {
+    public UserDTO(int user_id, String email, String full_name, String password, String avatar, int phone, String address, boolean status, String role_id, String role_name) {
         this.user_id = user_id;
         this.email = email;
         this.full_name = full_name;
@@ -45,7 +26,9 @@ public class User {
         this.address = address;
         this.status = status;
         this.role_id = role_id;
+        this.role_name = role_name;
     }
+
 
     public int getUser_id() {
         return user_id;
@@ -119,11 +102,11 @@ public class User {
         this.role_id = role_id;
     }
 
-    public Role getRole() {
-        return role;
+    public String getRole_name() {
+        return role_name;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole_name(String role_name) {
+        this.role_name = role_name;
     }
 }

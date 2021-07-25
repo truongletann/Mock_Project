@@ -1,26 +1,15 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "course_detail")
-public class CourseDetail {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CourseDetailDTO {
     private int course_detail_id;
     private String title;
     private String url;
     private int course_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
-
-    public CourseDetail() {
+    public CourseDetailDTO() {
     }
 
-    public CourseDetail(int course_detail_id, String title, String url, int course_id) {
+    public CourseDetailDTO(int course_detail_id, String title, String url, int course_id) {
         this.course_detail_id = course_detail_id;
         this.title = title;
         this.url = url;
@@ -57,13 +46,5 @@ public class CourseDetail {
 
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
     }
 }

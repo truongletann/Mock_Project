@@ -1,30 +1,18 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "course_category")
-public class CourseCategory {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CourseCategoryDTO {
     private int category_id;
+    @NotEmpty(message = "Please Enter Title !")
     private String title;
+    @NotEmpty(message = "Please Enter Name Icon !")
     private String icon;
 
-    @OneToMany(mappedBy = "courseCategory", fetch = FetchType.LAZY)
-    private List<Course> courses;
-
-    public CourseCategory() {
+    public CourseCategoryDTO() {
     }
 
-    public CourseCategory(String title, String icon) {
-        this.title = title;
-        this.icon = icon;
-    }
-
-    public CourseCategory(int category_id, String title, String icon) {
+    public CourseCategoryDTO(int category_id, String title, String icon) {
         this.category_id = category_id;
         this.title = title;
         this.icon = icon;

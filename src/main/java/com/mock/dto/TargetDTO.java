@@ -1,25 +1,18 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "target")
-public class Target {
+public class TargetDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int target_id;
+    @NotEmpty(message = "Please Enter Title !")
     private String target_title;
     private int course_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
-
-    public Target() {
+    public TargetDTO() {
     }
 
-    public Target(int target_id, String target_title, int course_id) {
+    public TargetDTO(int target_id, String target_title, int course_id) {
         this.target_id = target_id;
         this.target_title = target_title;
         this.course_id = course_id;

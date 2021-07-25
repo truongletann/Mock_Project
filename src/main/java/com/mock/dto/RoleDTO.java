@@ -1,23 +1,11 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
-import java.util.List;
+public class RoleDTO {
 
-@Entity
-@Table(name = "role")
-public class Role {
-
-    @Id
     private String role_id;
     private String role_name;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    private List<User> user;
-
-    public Role() {
-    }
-
-    public Role(String role_id, String role_name) {
+    public RoleDTO(String role_id, String role_name) {
         this.role_id = role_id;
         this.role_name = role_name;
     }
