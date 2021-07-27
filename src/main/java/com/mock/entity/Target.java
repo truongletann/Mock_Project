@@ -19,6 +19,11 @@ public class Target {
     public Target() {
     }
 
+    public Target(int target_id, String target_title) {
+        this.target_id = target_id;
+        this.target_title = target_title;
+    }
+
     public Target(int target_id, String target_title, int course_id) {
         this.target_id = target_id;
         this.target_title = target_title;

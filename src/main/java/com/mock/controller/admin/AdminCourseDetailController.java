@@ -18,11 +18,24 @@ public class AdminCourseDetailController {
     @Autowired
     private CourseDetailService courseDetailService;
 
-    @GetMapping("{id}")
-    public Object get(@PathVariable int id) {
+    @GetMapping("by-course/{id}")
+    public Object getByCourse(@PathVariable int id) {
         try {
             List<CourseDetailDTO> courseDetailDTOS = courseDetailService.getDetailByID(id);
             return new ResponseEntity<Object>(courseDetailDTOS, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
+
+    @GetMapping("{id}")
+    public Object get(@PathVariable int id) {
+        try {
+            CourseDetailDTO courseDetailDTO = courseDetailService.getById(id);
+            return new ResponseEntity<Object>(courseDetailDTO, HttpStatus.OK);
 
         } catch (Exception e) {
             e.printStackTrace();

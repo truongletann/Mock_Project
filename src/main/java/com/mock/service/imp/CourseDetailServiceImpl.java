@@ -3,7 +3,6 @@ package com.mock.service.imp;
 import com.mock.dto.CourseDetailDTO;
 import com.mock.entity.CourseDetail;
 import com.mock.repository.CourseDetailRepository;
-import com.mock.repository.CourseRepository;
 import com.mock.service.CourseDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +52,18 @@ public class CourseDetailServiceImpl implements CourseDetailService {
             return;
         }
         courseDetailRepository.deleteById(id);
+    }
+
+    @Override
+    public CourseDetailDTO getById(int id) {
+        if(id < 0 ){
+            return null;
+        }
+        CourseDetail entity = courseDetailRepository.findById(id).get();
+        return new CourseDetailDTO(
+                entity.getCourse_detail_id(),
+                entity.getTitle(),
+                entity.getUrl(),
+                entity.getCourse_id());
     }
 }

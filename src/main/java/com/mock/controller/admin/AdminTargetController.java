@@ -18,10 +18,22 @@ public class AdminTargetController {
     @Autowired
     private TargetService targetService;
 
+    @GetMapping("by-course/{id}")
+    public Object getByCourse(@PathVariable int id) {
+        try {
+            List<TargetDTO> targetDTO = targetService.getTargetByID(id);
+            return new ResponseEntity<Object>(targetDTO, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
     @GetMapping("{id}")
     public Object get(@PathVariable int id) {
         try {
-            List<TargetDTO> targetDTO = targetService.getTargetByID(id);
+            TargetDTO targetDTO = targetService.getById(id);
             return new ResponseEntity<Object>(targetDTO, HttpStatus.OK);
 
         } catch (Exception e) {

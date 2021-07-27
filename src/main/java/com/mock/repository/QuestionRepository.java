@@ -12,8 +12,7 @@ import java.util.List;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
-    @Query("SELECT new com.mock.dto.QuestionDTO(question_id,question_content,course_id)" +
-            "FROM Question WHERE course_id =?1")
-    List<QuestionDTO> getQuestionDetailByID(int courseID);
+    @Query("FROM Question WHERE course_id =?1")
+    List<Question> getQuestionDetailByID(int courseID);
 
 }

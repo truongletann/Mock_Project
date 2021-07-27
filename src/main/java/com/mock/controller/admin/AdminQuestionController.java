@@ -17,6 +17,19 @@ public class AdminQuestionController {
     @Autowired
     private QuestionService questionService;
 
+    @GetMapping("by-course/{id}")
+    public Object getByCourse(@PathVariable int id) {
+        try {
+            List<QuestionDTO> questionDTO = questionService.getQuestionByID(id);
+            return new ResponseEntity<Object>(questionDTO, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
+
     @GetMapping("{id}")
     public Object get(@PathVariable int id) {
         try {
@@ -26,7 +39,6 @@ public class AdminQuestionController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-
         }
     }
 

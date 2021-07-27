@@ -39,9 +39,10 @@ public class TargetServiceImpl implements TargetService {
         }
         Target entity = new Target(
                 targetDTO.getTarget_id(),
-                targetDTO.getTarget_title(),
-                targetDTO.getCourse_id());
-        targetRepository.saveAndFlush(entity);
+                targetDTO.getTarget_title());
+
+        targetRepository.editTarget(targetDTO.getTarget_title(),targetDTO.getTarget_id());
+//        targetRepository.saveAndFlush(entity);
 
     }
 
@@ -51,5 +52,17 @@ public class TargetServiceImpl implements TargetService {
             return;
         }
         targetRepository.deleteById(id);
+    }
+
+    @Override
+    public TargetDTO getById(int id) {
+        if(id < 0 ){
+            return null;
+        }
+        Target entity = targetRepository.findById(id).get();
+        return new TargetDTO(
+                entity.getTarget_id(),
+                entity.getTarget_title(),
+                entity.getCourse_id());
     }
 }

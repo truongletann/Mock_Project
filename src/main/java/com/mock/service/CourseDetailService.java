@@ -1,7 +1,6 @@
 package com.mock.service;
 
 import com.mock.dto.CourseDetailDTO;
-import com.mock.dto.TargetDTO;
 
 import java.util.List;
 
@@ -15,5 +14,6 @@ public interface CourseDetailService {
 
     void deleteById(int id);
 
+    CourseDetailDTO getById(int id);
 
 }

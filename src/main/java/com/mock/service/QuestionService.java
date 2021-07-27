@@ -1,5 +1,6 @@
 package com.mock.service;
 
+import com.mock.dto.CourseDetailDTO;
 import com.mock.dto.QuestionDTO;
 import com.mock.dto.TargetDTO;
 
@@ -14,4 +15,6 @@ public interface QuestionService {
     void edit(QuestionDTO questionDTO);
 
     void deleteById(int id);
+
+    QuestionDTO getById(int id);
 }
