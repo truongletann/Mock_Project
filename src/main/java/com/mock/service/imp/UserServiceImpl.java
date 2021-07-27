@@ -66,4 +66,12 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.deleteUser(id);
     }
+
+    @Override
+    public void acticeByID(int id) {
+        if(id < 0){
+            return;
+        }
+        userRepository.activeUser(id);
+    }
 }

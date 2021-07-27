@@ -15,4 +15,6 @@ public interface UserService {
     UserDTO getById(int id);
 
     void deleteById(int id);
+
+    void acticeByID(int id);
 }

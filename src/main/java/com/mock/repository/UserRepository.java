@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Transactional
 @Repository
@@ -18,4 +17,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("UPDATE User set status = 0 " +
             " WHERE user_id =?1")
     void deleteUser(int userID);
+
+    @Modifying
+    @Query("UPDATE User set status = 1 " +
+            " WHERE user_id =?1")
+    void activeUser(int userID);
 }

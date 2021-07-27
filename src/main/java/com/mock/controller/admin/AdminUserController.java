@@ -30,10 +30,23 @@ public class AdminUserController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/delete/{id}")
     public Object delete(@PathVariable int id) {
         try {
             userService.deleteById(id);
+            return new ResponseEntity<Object>(HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
+
+    @PutMapping("/active/{idActive}")
+    public Object active(@PathVariable int idActive) {
+        try {
+            userService.acticeByID(idActive);
             return new ResponseEntity<Object>(HttpStatus.OK);
 
         } catch (Exception e) {
