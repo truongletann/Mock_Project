@@ -1,6 +1,5 @@
 package com.mock.service.imp;
 
-import com.mock.dto.CourseDTO;
 import com.mock.dto.TargetDTO;
 import com.mock.entity.Target;
 import com.mock.repository.TargetRepository;

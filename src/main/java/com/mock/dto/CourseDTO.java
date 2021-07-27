@@ -15,7 +15,7 @@ public class CourseDTO {
     private String image;
     @NotEmpty(message = "Please Enter Description !")
     private String description;
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
+//    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd")
     private Date last_update;
     @Min(4)
     private int number_question;
@@ -24,11 +24,12 @@ public class CourseDTO {
     private int user_id;
     private int category_id;
     private String category_name;
+    private String full_name;
 
     public CourseDTO() {
     }
 
-    public CourseDTO(int course_id, String title, String image, String description, Date last_update, int number_question, int time_do, int user_id, int category_id, String category_name) {
+    public CourseDTO(int course_id, String title, String image, String description, Date last_update, int number_question, int time_do, int user_id, int category_id, String category_name, String full_name) {
         this.course_id = course_id;
         this.title = title;
         this.image = image;
@@ -39,6 +40,7 @@ public class CourseDTO {
         this.user_id = user_id;
         this.category_id = category_id;
         this.category_name = category_name;
+        this.full_name = full_name;
     }
 
     public int getCourse_id() {
@@ -119,5 +121,13 @@ public class CourseDTO {
 
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
+    }
+
+    public String getFull_name() {
+        return full_name;
+    }
+
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 }

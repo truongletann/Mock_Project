@@ -3,6 +3,7 @@ package com.mock.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Course {
     private String image;
     private String description;
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern="dd-MM-yyyy")
+//    @JsonFormat(pattern="yyyy-MM-dd")
     private Date last_update;
     private int number_question;
     private int time_do;
@@ -32,20 +33,20 @@ public class Course {
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private CourseCategory courseCategory;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<UserEnroll> userEnrolls;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<UserEnroll> userEnrolls = new ArrayList<UserEnroll>();
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Target> targets;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Target> targets= new ArrayList<Target>();
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<CourseDetail> courseDetails;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<CourseDetail> courseDetails = new ArrayList<CourseDetail>();
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Question> questions;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Question> questions = new ArrayList<Question>();
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Exam> exams;
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Exam> exams = new ArrayList<Exam>();
 
     public Course() {
     }

@@ -37,7 +37,26 @@ public class UserServiceImpl implements UserService {
                     entity.getRole_id(),
                     roleService.getById(entity.getRole_id()).getRole_name()));
         }
-        return null;
+        return dtos;
+    }
+
+    @Override
+    public UserDTO getById(int id) {
+        if(id <0){
+            return null;
+        }
+        User entity = userRepository.findById(id).get();
+        return new UserDTO(
+                entity.getUser_id(),
+                entity.getEmail(),
+                entity.getFull_name(),
+                entity.getPassword(),
+                entity.getAvatar(),
+                entity.getPhone(),
+                entity.getAddress(),
+                entity.isStatus(),
+                entity.getRole_id(),
+                roleService.getById(entity.getRole_id()).getRole_name());
     }
 
     @Override
@@ -45,6 +64,6 @@ public class UserServiceImpl implements UserService {
         if(id < 0){
             return;
         }
-        userRepository.deleteById(id);
+        userRepository.deleteUser(id);
     }
 }

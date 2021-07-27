@@ -1,6 +1,7 @@
 package com.mock.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,8 +24,8 @@ public class Exam {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @OneToMany(mappedBy = "exam", fetch = FetchType.LAZY)
-    private List<ExamDetail> examDetails;
+    @OneToMany(mappedBy = "exam", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<ExamDetail> examDetails = new ArrayList<ExamDetail>();
 
     public Exam() {
     }

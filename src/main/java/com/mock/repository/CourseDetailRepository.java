@@ -15,7 +15,5 @@ public interface CourseDetailRepository extends JpaRepository<CourseDetail, Inte
             "FROM CourseDetail WHERE course_id =?1")
     List<CourseDetailDTO> getCoursesDetailByID(int courseID);
 
-    @Query("DELETE FROM CourseDetail WHERE course_id =?1")
-    void deleteCourseDetail(int courseID);
 
 }

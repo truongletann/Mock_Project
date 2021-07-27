@@ -6,6 +6,7 @@ import com.mock.repository.CourseDetailRepository;
 import com.mock.repository.CourseRepository;
 import com.mock.service.CourseCategoryService;
 import com.mock.service.CourseService;
+import com.mock.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseCategoryService courseCategoryService;
 
     @Autowired
-    private CourseDetailRepository courseDetailRepository;
+    private UserService userService;
 
     @Override
     public List<CourseDTO> getAll() {
@@ -39,7 +40,8 @@ public class CourseServiceImpl implements CourseService {
                     entity.getTime_do(),
                     entity.getUser_id(),
                     entity.getCategory_id(),
-                    courseCategoryService.getById(entity.getCategory_id()).getTitle()));
+                    courseCategoryService.getById(entity.getCategory_id()).getTitle(),
+                    userService.getById(entity.getUser_id()).getFull_name()));
         }
         return dtos;
     }
@@ -86,7 +88,7 @@ public class CourseServiceImpl implements CourseService {
             return;
         }
         courseRepository.deleteById(id);
-        courseDetailRepository.deleteCourseDetail(id);
+
     }
 
     @Override
@@ -105,6 +107,7 @@ public class CourseServiceImpl implements CourseService {
                 entity.getTime_do(),
                 entity.getUser_id(),
                 entity.getCategory_id(),
-                courseCategoryService.getById(entity.getCategory_id()).getTitle());
+                courseCategoryService.getById(entity.getCategory_id()).getTitle(),
+                userService.getById(entity.getUser_id()).getFull_name());
     }
 }

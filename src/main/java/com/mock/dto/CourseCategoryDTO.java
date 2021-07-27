@@ -6,16 +6,13 @@ public class CourseCategoryDTO {
     private int category_id;
     @NotEmpty(message = "Please Enter Title !")
     private String title;
-    @NotEmpty(message = "Please Enter Name Icon !")
-    private String icon;
 
     public CourseCategoryDTO() {
     }
 
-    public CourseCategoryDTO(int category_id, String title, String icon) {
+    public CourseCategoryDTO(int category_id, String title) {
         this.category_id = category_id;
         this.title = title;
-        this.icon = icon;
     }
 
     public int getCategory_id() {
@@ -34,11 +31,4 @@ public class CourseCategoryDTO {
         this.title = title;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
 }

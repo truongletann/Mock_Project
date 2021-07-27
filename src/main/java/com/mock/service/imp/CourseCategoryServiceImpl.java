@@ -24,8 +24,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService {
         for (CourseCategory entity : listCategory){
             listCategoryDTO.add(new CourseCategoryDTO(
                     entity.getCategory_id(),
-                    entity.getTitle(),
-                    entity.getIcon()));
+                    entity.getTitle()));
         }
         return listCategoryDTO;
     }
@@ -36,8 +35,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService {
             return;
         }
         CourseCategory entity = new CourseCategory(
-                courseCategoryDTO.getTitle(),
-                courseCategoryDTO.getIcon());
+                courseCategoryDTO.getTitle());
         courseCategoryRepository.save(entity);
     }
 
@@ -48,8 +46,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService {
         }
         CourseCategory entity = new CourseCategory(
                 courseCategoryDTO.getCategory_id(),
-                courseCategoryDTO.getTitle(),
-                courseCategoryDTO.getIcon());
+                courseCategoryDTO.getTitle());
         courseCategoryRepository.saveAndFlush(entity);
     }
 
@@ -67,6 +64,6 @@ public class CourseCategoryServiceImpl implements CourseCategoryService {
             return null;
         }
         CourseCategory entity = courseCategoryRepository.findById(id).get();
-        return new CourseCategoryDTO(entity.getCategory_id(),entity.getTitle(),entity.getIcon());
+        return new CourseCategoryDTO(entity.getCategory_id(),entity.getTitle());
     }
 }

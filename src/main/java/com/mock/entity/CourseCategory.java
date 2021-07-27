@@ -11,7 +11,6 @@ public class CourseCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int category_id;
     private String title;
-    private String icon;
 
     @OneToMany(mappedBy = "courseCategory", fetch = FetchType.LAZY)
     private List<Course> courses;
@@ -19,15 +18,13 @@ public class CourseCategory {
     public CourseCategory() {
     }
 
-    public CourseCategory(String title, String icon) {
+    public CourseCategory(String title) {
         this.title = title;
-        this.icon = icon;
     }
 
-    public CourseCategory(int category_id, String title, String icon) {
+    public CourseCategory(int category_id, String title) {
         this.category_id = category_id;
         this.title = title;
-        this.icon = icon;
     }
 
     public int getCategory_id() {
@@ -46,11 +43,4 @@ public class CourseCategory {
         this.title = title;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
 }

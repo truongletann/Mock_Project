@@ -73,6 +73,5 @@ public class QuestionServiceImpl implements QuestionService {
             return;
         }
         questionRepository.deleteById(id);
-        answerRepository.deleteAns(id);
     }
 }

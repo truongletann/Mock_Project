@@ -17,6 +17,4 @@ public interface AnswerRepository extends JpaRepository<Answer, Integer> {
             "FROM Answer WHERE question_id =?1")
     List<AnswerDTO> getAnsDetailByID(int quizID);
 
-    @Query("DELETE FROM Answer WHERE question_id =?1")
-    void deleteAns(int questionID);
 }
