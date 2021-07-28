@@ -21,10 +21,15 @@ public class Question {
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<Answer>();
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
-    private List<ExamDetail> examDetails;
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<ExamDetail> examDetails = new ArrayList<ExamDetail>();
 
     public Question() {
+    }
+
+    public Question(String question_content, int course_id) {
+        this.question_content = question_content;
+        this.course_id = course_id;
     }
 
     public Question(int question_id, String question_content, int course_id) {

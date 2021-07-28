@@ -33,7 +33,7 @@ public class AdminQuestionController {
     @GetMapping("{id}")
     public Object get(@PathVariable int id) {
         try {
-            List<QuestionDTO> questionDTO = questionService.getQuestionByID(id);
+            QuestionDTO questionDTO = questionService.getById(id);
             return new ResponseEntity<Object>(questionDTO, HttpStatus.OK);
 
         } catch (Exception e) {

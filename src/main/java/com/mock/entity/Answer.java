@@ -20,6 +20,12 @@ public class Answer {
     public Answer() {
     }
 
+    public Answer(String ans_content, boolean is_right, int question_id) {
+        this.ans_content = ans_content;
+        this.is_right = is_right;
+        this.question_id = question_id;
+    }
+
     public Answer(int ans_id, String ans_content, boolean is_right, int question_id) {
         this.ans_id = ans_id;
         this.ans_content = ans_content;

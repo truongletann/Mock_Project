@@ -48,13 +48,11 @@ public class QuestionServiceImpl implements QuestionService {
             return;
         }
         Question question = new Question(
-                questionDTO.getQuestion_id(),
                 questionDTO.getQuestion_content(),
                 questionDTO.getCourse_id());
         questionRepository.save(question);
         for(AnswerDTO entity : questionDTO.getListAns()){
             answerRepository.save(new Answer(
-                    entity.getAns_id(),
                     entity.getAns_content(),
                     entity.isIs_right(),
                     questionRepository.findAll().size()));
