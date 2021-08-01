@@ -2,21 +2,23 @@ package com.mock.dto;
 
 import java.util.Date;
 
-public class UserEnroll {
+public class UserEnrollDTO {
 
     private int user_enroll_id;
     private Date date_enroll;
     private int user_id;
     private int course_id;
+    private CourseDTO courseDTO;
 
-    public UserEnroll() {
+    public UserEnrollDTO() {
     }
 
-    public UserEnroll(int user_enroll_id, Date date_enroll, int user_id, int course_id) {
+    public UserEnrollDTO(int user_enroll_id, Date date_enroll, int user_id, int course_id, CourseDTO courseDTO) {
         this.user_enroll_id = user_enroll_id;
         this.date_enroll = date_enroll;
         this.user_id = user_id;
         this.course_id = course_id;
+        this.courseDTO = courseDTO;
     }
 
     public int getUser_enroll_id() {
@@ -49,5 +51,13 @@ public class UserEnroll {
 
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
+    }
+
+    public CourseDTO getCourseDTO() {
+        return courseDTO;
+    }
+
+    public void setCourseDTO(CourseDTO courseDTO) {
+        this.courseDTO = courseDTO;
     }
 }

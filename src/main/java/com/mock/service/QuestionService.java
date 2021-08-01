@@ -17,4 +17,6 @@ public interface QuestionService {
     void deleteById(int id);
 
     QuestionDTO getById(int id);
+
+    List<QuestionDTO> questionExam(int courseID);
 }

@@ -16,4 +16,7 @@ public interface CourseService {
     void deleteById(int id);
 
     CourseDTO getById(int id);
+
+    List<CourseDTO> getByName(String name);
+
 }

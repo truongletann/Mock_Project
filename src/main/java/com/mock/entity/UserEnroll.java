@@ -29,6 +29,12 @@ public class UserEnroll {
     public UserEnroll() {
     }
 
+    public UserEnroll(Date date_enroll, int user_id, int course_id) {
+        this.date_enroll = date_enroll;
+        this.user_id = user_id;
+        this.course_id = course_id;
+    }
+
     public UserEnroll(int user_enroll_id, Date date_enroll, int user_id, int course_id) {
         this.user_enroll_id = user_enroll_id;
         this.date_enroll = date_enroll;

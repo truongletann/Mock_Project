@@ -1,33 +1,16 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
+import java.util.List;
 
-@Entity
-@Table(name = "exam_detail")
-public class ExamDetail {
+public class ExamDetailDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int exam_detail_id;
     private boolean status_ans;
     private int exam_id;
     private int question_id;
+    private QuestionDTO questionDTO;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "exam_id", insertable = false, updatable = false)
-    private Exam exam;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id", insertable = false, updatable = false)
-    private Question question;
-
-    public ExamDetail() {
-    }
-
-    public ExamDetail(boolean status_ans, int exam_id, int question_id) {
-        this.status_ans = status_ans;
-        this.exam_id = exam_id;
-        this.question_id = question_id;
+    public ExamDetailDTO() {
     }
 
     public int getExam_detail_id() {
@@ -60,5 +43,13 @@ public class ExamDetail {
 
     public void setQuestion_id(int question_id) {
         this.question_id = question_id;
+    }
+
+    public QuestionDTO getQuestionDTO() {
+        return questionDTO;
+    }
+
+    public void setQuestionDTO(QuestionDTO questionDTO) {
+        this.questionDTO = questionDTO;
     }
 }

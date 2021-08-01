@@ -1,6 +1,7 @@
 package com.mock.service.imp;
 
 import com.mock.dto.AnswerDTO;
+import com.mock.dto.CourseDTO;
 import com.mock.dto.QuestionDTO;
 import com.mock.dto.TargetDTO;
 import com.mock.entity.Answer;
@@ -8,6 +9,7 @@ import com.mock.entity.Question;
 import com.mock.entity.Target;
 import com.mock.repository.AnswerRepository;
 import com.mock.repository.QuestionRepository;
+import com.mock.service.CourseService;
 import com.mock.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,8 @@ public class QuestionServiceImpl implements QuestionService {
     @Autowired
     private AnswerRepository answerRepository;
 
-
+    @Autowired
+    private CourseService courseService;
 
     @Override
     public List<QuestionDTO> getQuestionByID(int id) {
@@ -55,7 +58,7 @@ public class QuestionServiceImpl implements QuestionService {
             answerRepository.save(new Answer(
                     entity.getAns_content(),
                     entity.isIs_right(),
-                    questionRepository.findAll().size()));
+                    questionRepository.getIDEnd()));
         }
     }
 
@@ -98,5 +101,22 @@ public class QuestionServiceImpl implements QuestionService {
                 entity.getQuestion_content(),
                 entity.getCourse_id(),
                 answerRepository.getAnsDetailByID(entity.getQuestion_id()));
+    }
+
+    @Override
+    public List<QuestionDTO> questionExam(int courseID) {
+        List<QuestionDTO> dtos = new ArrayList<QuestionDTO>();
+        CourseDTO courseDTO = courseService.getById(courseID);
+        List<Question> entities = questionRepository.getQuestionByCourse(courseID,courseDTO.getNumber_question());
+
+        for(Question entity : entities){
+            dtos.add(new QuestionDTO(
+                    entity.getQuestion_id(),
+                    entity.getQuestion_content(),
+                    entity.getCourse_id(),
+                    answerRepository.getAnsDetailByID(entity.getQuestion_id())));
+        }
+
+        return dtos;
     }
 }

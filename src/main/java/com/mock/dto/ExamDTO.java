@@ -1,37 +1,30 @@
-package com.mock.entity;
+package com.mock.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "exam")
-public class Exam {
+public class ExamDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int exam_id;
     private int time_need;
     private float grade;
     private int number_quiz;
     private int course_id;
     private int user_id;
+    private List<ExamDetailDTO> examDetailDTO;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
-
-    @OneToMany(mappedBy = "exam", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<ExamDetail> examDetails = new ArrayList<ExamDetail>();
-
-    public Exam() {
+    public ExamDTO() {
     }
 
-    public Exam(int time_need, float grade, int number_quiz, int course_id, int user_id) {
+    public ExamDTO(int time_need, float grade, int number_quiz, int course_id, int user_id) {
+        this.time_need = time_need;
+        this.grade = grade;
+        this.number_quiz = number_quiz;
+        this.course_id = course_id;
+        this.user_id = user_id;
+    }
+
+    public ExamDTO(int exam_id, int time_need, float grade, int number_quiz, int course_id, int user_id) {
+        this.exam_id = exam_id;
         this.time_need = time_need;
         this.grade = grade;
         this.number_quiz = number_quiz;
@@ -85,5 +78,13 @@ public class Exam {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public List<ExamDetailDTO> getExamDetailDTO() {
+        return examDetailDTO;
+    }
+
+    public void setExamDetailDTO(List<ExamDetailDTO> examDetailDTO) {
+        this.examDetailDTO = examDetailDTO;
     }
 }

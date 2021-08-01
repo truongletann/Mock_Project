@@ -110,4 +110,25 @@ public class CourseServiceImpl implements CourseService {
                 courseCategoryService.getById(entity.getCategory_id()).getTitle(),
                 userService.getById(entity.getUser_id()).getFull_name());
     }
+
+    @Override
+    public List<CourseDTO> getByName(String name) {
+        List<CourseDTO> dtos = new ArrayList<CourseDTO>();
+        List<Course> entities = courseRepository.getCourseByName(name);
+        for (Course entity : entities){
+            dtos.add(new CourseDTO(
+                    entity.getCourse_id(),
+                    entity.getTitle(),
+                    entity.getImage(),
+                    entity.getDescription(),
+                    entity.getLast_update(),
+                    entity.getNumber_question(),
+                    entity.getTime_do(),
+                    entity.getUser_id(),
+                    entity.getCategory_id(),
+                    courseCategoryService.getById(entity.getCategory_id()).getTitle(),
+                    userService.getById(entity.getUser_id()).getFull_name()));
+        }
+        return dtos;
+    }
 }
