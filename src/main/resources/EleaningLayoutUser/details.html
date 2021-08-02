@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="./lib/modal-video/css/modal-video.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/course.css">
+    <style>
+        .modal-dialog {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .modal-body {
+            position: relative;
+            padding: 1px;
+        }
+
+        .close {
+            position: absolute;
+            right: -30px;
+            top: 0;
+            z-index: 999;
+            font-size: 2rem;
+            font-weight: normal;
+            color: #fff;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<header class="border-bottom">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Elearning</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse row" id="collapsibleNavId">
+            <div class="col-md-6">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-between" >
+<!--                    <li class="nav-item mr-3" >-->
+<!--                        <div class="dropdown">-->
+<!--                            <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">-->
+<!--                                <i class="fa fa-th"></i>-->
+<!--                                <span class="ml-2">Categories</span>-->
+<!--                            </a>-->
+<!--                            <div class="dropdown-menu" id="list-category">-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-laptop mr-1"></i>-->
+<!--                                    <span>Development</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-camera-retro mr-1"></i>-->
+<!--                                    <span>Photography</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-bar-chart mr-1"></i>-->
+<!--                                    <span>Business</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-desktop mr-1"></i>-->
+<!--                                    <span>IT & Software</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-handshake-o mr-1"></i>-->
+<!--                                    <span>Marketing</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-music mr-1"></i>-->
+<!--                                    <span>Music</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-pencil-square-o mr-1"></i>-->
+<!--                                    <span>Design</span>-->
+<!--                                </a>-->
+<!--                                <a class="dropdown-item" href="#">-->
+<!--                                    <i class="fa fa-cutlery mr-1"></i>-->
+<!--                                    <span>Cooking</span>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+                </ul>
+            </div>
+            <div class="col-md-5 d-flex justify-content-end">
+                <div class="dropdown">
+                    <div class="dropdown-toggle font-weight-bold text-dark" data-toggle="dropdown">
+                        <img src="img/nodejs.jpg" height="40px" width="40px"  style="border-radius: 50%; margin-right: 6px">
+                        Group Huy
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="course.html">My Course</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    <section class="course-banner" id="titleCourse">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Name Coure Title </h1>
+                <h5>
+                    Description
+                </h5>
+                <h6 class="mt-3">
+                    <span><i class="fa fa-user m-1"></i> Created by </span>
+                    <a href="#" class="text-white font-weight-bold mr-4">Lê Quang Song</a>
+                    <span><i class="fa fa-calendar-check-o mr-1"></i> Last updated 04/2019</span>
+                </h6>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="course-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- BEGIN DESC -->
+                    <div class="course-desc">
+                        <h4 class="course-desc-title" >What you'll learn</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="course-desc-items" id="showTarget">
+                                    <li>
+                                        <i class="fa fa-check"></i>
+                                        <span>Learn to use Python professionally, learning both Python 2 and Python
+                                            3!</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END DESC -->
+                    <!-- BEGIN LIST -->
+                    <div class="course-list">
+                        <div class="list-header d-flex align-items-center justify-content-between">
+                            <h4 class="font-weight-bold">Course content</h4>
+                          
+                        </div>
+                        <div class="mt-2">
+                            <a href="#list-content" class="list-content-first" data-toggle="collapse">
+                                <span><i class="fa fa-minus mr-1"></i> Course list</span>
+                               
+                            </a>
+                            <ul id="list-content" class="collapse show" >
+                                <li>
+                                    <a class="video-btn"  data-toggle="modal" data-src="https://www.youtube.com/watch?v=pN4H4QR-FQI" data-target="#myModal">
+                                        <span> <i class="fa fa-play-circle mr-1"></i>
+                                            Course Introduction
+                                        </span>
+                                        <span>5:32</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> <i class="fa fa-play-circle mr-1"></i>
+                                            Getting the Notebooks and the Course Material
+                                        </span>
+                                        <span>15:30</span>
+                                    </a>
+                                    
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> <i class="fa fa-play-circle mr-1"></i>
+                                            Git and Github Overview (Optional)
+                                        </span>
+                                        <span>12:05</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> <i class="fa fa-play-circle mr-1"></i>
+                                            Introduction to Python Data Types
+                                        </span>
+                                        <span>10:35</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END LIST -->
+                    <!-- BEGIN INFO -->
+                    <div class="course-info mt-4">
+                        <h4 class="font-weight-bold">Description</h4>
+                        <div class="" id="showDescription">
+
+                        </div>
+                    </div>
+                    <!-- END INFO -->
+                </div>
+                <div class="col-md-4" id="button-addCourse">
+                    <div class="course-buy">
+                        <h2 class="mb-4 font-weight-bold" >
+                            FREE
+                        </h2>
+                        <button class="btn btn-danger w-100" onclick="">dat ten cho hop li</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGN IN MODAL -->
+    <div class="modal" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="lgEmail">Email</label>
+                            <input type="email" class="form-control" id="lgEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="lgPassword">Password</label>
+                            <input type="password" class="form-control" id="lgPassword">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div class="modal" id="signUpModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="rgName">Name</label>
+                            <input type="text" class="form-control" id="rgName">
+                        </div>
+                        <div class="form-group">
+                            <label for="rgEmail">Email</label>
+                            <input type="email" class="form-control" id="rgEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="rgPassword">Password</label>
+                            <input type="password" class="form-control" id="rgPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="rgConfirm">Confirm</label>
+                            <input type="password" class="form-control" id="rgConfirm">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- Video Modal -->
+
+    <footer class="py-4 mt-4 text-center border-top">
+        <span>Copyright © 2019 Group Huy, Inc.</span>
+    </footer>
+
+<!-- begin video  -->
+<!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <!-- 16:9 aspect ratio -->
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <input type="hidden" value="1" id="userID">
+
+<!-- end video -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./lib/jquery/jquery.slim.min.js"></script>
+    <script src="./lib/popper.js/popper.min.js"></script>
+    <script src="./lib/bootstrap/bootstrap.min.js"></script>
+    <script src="./lib/modal-video/js/jquery-modal-video.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/course/detail-course.js" ></script>
+    <script>
+        $(".btn-video").modalVideo({ channel: 'youtube' });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+// Gets the video src from the data-src on each button
+
+var $videoSrc;
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+
+
+// when the modal is opened autoplay it
+$('#myModal').on('shown.bs.modal', function (e) {
+
+// set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+})
+
+// stop playing the youtube video when I close the modal
+$('#myModal').on('hide.bs.modal', function (e) {
+    // a poor man's stop video
+    $("#video").attr('src',$videoSrc);
+})
+
+// document ready
+});
+ </script>
+<script src="js/course/category.js"></script>
+</body>
+</html>

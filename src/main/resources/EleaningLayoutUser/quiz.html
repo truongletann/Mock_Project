@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../EleaningLayoutUser/css/quiz.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Quiz</title>
+    <style>
+        .header{
+            background: linear-gradient(#29303B,#29303B,#29303B);
+            color: #fff;
+            box-shadow: inset 0 -1px 5px rgb(0 0 0 / 10%);
+            min-height: 3.5em;
+            min-height: 150px;
+        }
+        .title-table{
+            font-size: 1.7rem;
+        }
+        .title-body{
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper-quiz">
+                <div class="col l-12 header">
+                    <section class="course-banner" id="titleCourse">
+                        <div class="container">
+                            <div class="banner-content" style="padding: 30px 0">
+                                <h1 style="font-size: 4rem; font-weight: 500" >Name Coure Title </h1>
+                                <h5 style="font-size:1.4rem ;font-weight: 400">
+                                   Description
+                                </h5>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col l-12" > 
+                    <div class="quiz-content">
+                        <div class="quiz-title">
+                            <h5 class="text-title">Quiz 30 min</h5>
+                            <h1>Node Js Program  </h1>
+                        </div>
+ 
+                        <div class="quiz-info">
+                            <div class="quiz-info-submit">
+                                <h3 class="grade-info" style="color:#17a2b8;font-weight: 600;">Submit your assignment</h3>
+                                <span class="due-date">Due date : Jul 12 , 1:59PM +07 </span>
+                            </div>
+                            <a class="btn btn-info" style="padding: 3px 0;font-size: 2rem; color: #fff; font-weight: 400"  href="./quiz-show.html">Start</a>
+                        </div>
+                        <div class="quiz-info-grade">
+                            <div class="grade"> 
+                                <h3 class="grade-info" style="color:#17a2b8;font-weight: 600;">Receive Grade</h3>
+                                <h3>To Pass 
+                                     <span class="grade-info">80% or Higher</span>
+                                </h3>
+                            </div>
+                           <div class="grade-display ">
+                               <h3>Grade</h3>
+                               <h4>100%</h4>
+                           </div> 
+                        </div>
+                    </div>
+                    <h5 class="font-weight-bold " style="font-size: 2rem; margin-left: 600px; margin-bottom: 40px;">Submitted Assessments</h5>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr class="title-table">
+                            <th scope="col">Title</th>
+                            <th scope="col">Recorded Score</th>
+                            <th scope="col">Feedback Available</th>
+                            <th scope="col">Individual Score</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Submitted</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="title-body">
+                            <th scope="row">Final Test Theory</th>
+                            <td>100</td>
+                            <td style="color: #17a2b8; font-weight: 400;">View Feedback</td>
+                            <td>85</td>
+                            <td>24 min 23 sec</td>
+                            <td>2021-05-14 10:00 AM</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
