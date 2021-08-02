@@ -2,7 +2,6 @@ package com.mock.service.imp;
 
 import com.mock.dto.ExamDTO;
 import com.mock.dto.ExamDetailDTO;
-import com.mock.dto.QuestionDTO;
 import com.mock.entity.Exam;
 import com.mock.entity.ExamDetail;
 import com.mock.repository.ExamDetailRepository;
