@@ -131,4 +131,25 @@ public class CourseServiceImpl implements CourseService {
         }
         return dtos;
     }
+
+    @Override
+    public List<CourseDTO> getByCategory(int categoryID) {
+        List<CourseDTO> dtos = new ArrayList<CourseDTO>();
+        List<Course> entities = courseRepository.getCourseByCategory(categoryID);
+        for (Course entity : entities){
+            dtos.add(new CourseDTO(
+                    entity.getCourse_id(),
+                    entity.getTitle(),
+                    entity.getImage(),
+                    entity.getDescription(),
+                    entity.getLast_update(),
+                    entity.getNumber_question(),
+                    entity.getTime_do(),
+                    entity.getUser_id(),
+                    entity.getCategory_id(),
+                    courseCategoryService.getById(entity.getCategory_id()).getTitle(),
+                    userService.getById(entity.getUser_id()).getFull_name()));
+        }
+        return dtos;
+    }
 }

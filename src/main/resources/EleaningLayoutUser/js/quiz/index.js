@@ -19,7 +19,7 @@ function loadQuestion() {
                     contentAnswer += `
       <li class="content-item">
 <!--      radio cua  cau hoi  -->
-      <input type="radio" id="answer${No}" value="${answer.is_right}"/>
+      <input type="radio" name="answer${No}" value="${answer.is_right}"/>
       <span>
       ${answer.ans_content}
       </span>
@@ -127,55 +127,52 @@ function QuizShow(){
 
 function submitQuestion() {
     let numberQuestion = document.getElementById("numberQuestion").value;
-    //   vong for theo number question
-
-    console.log(numberQuestion);
-    let exampleDetail = {
-            "course_id": id,
-            "examDetailDTO": [
-            {
-                "question_id": 1,
-                "status_ans": true
-            },
-            {
-                "question_id": 3,
-                "status_ans": true
-            },
-            {
-                "question_id": 2,
-                "status_ans":true
-            }
-            ,   {
-                    "question_id": 1,
-                    "status_ans":false
-                }
-        ],
-            // (10/tong cau hoi ) * so cau dung
-            "grade": (numberQuestion/10)*3,
-            "number_quiz": 4,
-            "time_need": 2345,
-            "user_id": 1
+    let numberQuiz = 0;
+    let examDetail = [];
+    for(let i=1; i<=numberQuestion;i++){
+        examDetail.push({
+            "question_id": document.getElementById("question"+i).value,
+            "status_ans": Array.from(document.getElementsByName("answer"+i)).find(r => r.checked).value
+        });
+        if(Array.from(document.getElementsByName("answer"+i)).find(r => r.checked).value == "true"){
+            numberQuiz++;
+        }
     }
+
+    let examDetailDTO = {
+        "course_id": id,
+         "examDetailDTO": examDetail,
+        "grade": (numberQuiz / numberQuestion) * 10,
+        "number_quiz": numberQuiz,
+        "time_need": 22,
+        "user_id": 1
+    }
+
+
     axios({
-        url: `http://localhost:8082/api/user/exam`,
-        method: "POST",
-        data: exampleDetail
+        url: 'http://localhost:8082/api/user/exam',
+        method: 'POST',
+        data: examDetailDTO
+        // headers: {
+        //     "Authorization": `Bearer ${token}`
+        // }
     })
-        .then( res =>{
-            swal("Submit Quiz Success!", "You clicked the button!", "success").then(function (res){
-                window.location.href = "../EleaningLayoutUser/quiz.html?id="+id;
-            });
+        .then(function (resp) {
+            swal("Successfully !", "You clicked the button!", "success").then(function(resp){
+                window.location.href = `../EleaningLayoutUser/quiz.html?id=${id}&userId=1`;
+            })
         })
-        .catch(err=>{
+        .catch(function (err) {
             console.log(err.response);
-            swal("Submit Quiz Error !", "You clicked the button!", "error");
-    })
+            swal("Unsuccessfully !", "You clicked the button!", "error");
+        })
+
 
 
 
 }
 
-// submitQuestion();
+
 
 
 

@@ -19,4 +19,6 @@ public interface CourseService {
 
     List<CourseDTO> getByName(String name);
 
+    List<CourseDTO> getByCategory(int categoryID);
+
 }

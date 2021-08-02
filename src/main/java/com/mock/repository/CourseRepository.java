@@ -12,4 +12,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query("FROM Course WHERE title like %?1%")
     List<Course> getCourseByName(String name);
+
+    @Query("FROM Course WHERE category_id = ?1")
+    List<Course> getCourseByCategory(int categoryID);
 }

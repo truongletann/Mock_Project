@@ -32,4 +32,17 @@ public class UserCourseController {
 
         }
     }
+
+    @GetMapping("by-category/{categoryID}")
+    public Object get(@PathVariable int categoryID) {
+        try {
+            List<CourseDTO> courseDTO = courseService.getByCategory(categoryID);
+            return new ResponseEntity<Object>(courseDTO, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
 }
