@@ -35,7 +35,6 @@ public class RoleServiceImpl implements RoleService {
             return;
         }
         Role entity = new Role(
-                roleDTO.getRole_id(),
                 roleDTO.getRole_name());
         roleRepository.save(entity);
     }
@@ -52,16 +51,16 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void deleteById(String id) {
-        if(id == null){
+    public void deleteById(int id) {
+        if(id < 0){
             return;
         }
         roleRepository.deleteById(id);
     }
 
     @Override
-    public RoleDTO getById(String id) {
-        if(id == null){
+    public RoleDTO getById(int id) {
+        if(id < 0 ){
             return null;
         }
         Role entity = roleRepository.findById(id).get();

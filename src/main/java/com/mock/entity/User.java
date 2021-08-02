@@ -17,7 +17,7 @@ public class User {
     private int phone;
     private String address;
     private boolean status;
-    private String role_id;
+    private int role_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", insertable = false, updatable = false)
@@ -35,7 +35,16 @@ public class User {
     public User() {
     }
 
-    public User(int user_id, String email, String full_name, String password, String avatar, int phone, String address, boolean status, String role_id) {
+    public User(int user_id, String full_name, String password, String avatar, int phone, String address) {
+        this.user_id = user_id;
+        this.full_name = full_name;
+        this.password = password;
+        this.avatar = avatar;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public User(int user_id, String email, String full_name, String password, String avatar, int phone, String address, boolean status, int role_id) {
         this.user_id = user_id;
         this.email = email;
         this.full_name = full_name;
@@ -111,11 +120,11 @@ public class User {
         this.status = status;
     }
 
-    public String getRole_id() {
+    public int getRole_id() {
         return role_id;
     }
 
-    public void setRole_id(String role_id) {
+    public void setRole_id(int role_id) {
         this.role_id = role_id;
     }
 

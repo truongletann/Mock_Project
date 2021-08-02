@@ -13,8 +13,8 @@ public interface RoleService {
 
     void edit(RoleDTO roleDTO);
 
-    void deleteById(String id);
+    void deleteById(int id);
 
-    RoleDTO getById(String id);
+    RoleDTO getById(int id);
 
 }

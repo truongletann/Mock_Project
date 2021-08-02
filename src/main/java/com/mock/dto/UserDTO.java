@@ -10,13 +10,13 @@ public class UserDTO {
     private int phone;
     private String address;
     private boolean status;
-    private String role_id;
+    private int role_id;
     private String role_name;
 
     public UserDTO() {
     }
 
-    public UserDTO(int user_id, String email, String full_name, String password, String avatar, int phone, String address, boolean status, String role_id, String role_name) {
+    public UserDTO(int user_id, String email, String full_name, String password, String avatar, int phone, String address, boolean status, int role_id, String role_name) {
         this.user_id = user_id;
         this.email = email;
         this.full_name = full_name;
@@ -94,11 +94,11 @@ public class UserDTO {
         this.status = status;
     }
 
-    public String getRole_id() {
+    public int getRole_id() {
         return role_id;
     }
 
-    public void setRole_id(String role_id) {
+    public void setRole_id(int role_id) {
         this.role_id = role_id;
     }
 

@@ -17,4 +17,9 @@ public interface UserService {
     void deleteById(int id);
 
     void acticeByID(int id);
+
+    void edit(UserDTO userDTO);
+
+//    void save(UserDTO userDTO);
+
 }

@@ -33,7 +33,7 @@ public class AdminRoleController {
     }
 
     @GetMapping("{id}")
-    public Object get(@PathVariable String id) {
+    public Object get(@PathVariable int id) {
         try {
             RoleDTO category = roleService.getById(id);
             return new ResponseEntity<Object>(category, HttpStatus.OK);
@@ -72,7 +72,7 @@ public class AdminRoleController {
     }
 
     @DeleteMapping("{id}")
-    public Object delete(@PathVariable String id) {
+    public Object delete(@PathVariable int id) {
         try {
             roleService.deleteById(id);
             return new ResponseEntity<Object>(HttpStatus.OK);

@@ -74,4 +74,19 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.activeUser(id);
     }
+
+    @Override
+    public void edit(UserDTO userDTO) {
+        if(userDTO == null){
+            return;
+        }
+        User entity = new User(
+                userDTO.getUser_id(),
+                userDTO.getFull_name(),
+                userDTO.getPassword(),
+                userDTO.getAvatar(),
+                userDTO.getPhone(),
+                userDTO.getAddress());
+        userRepository.saveAndFlush(entity);
+    }
 }
