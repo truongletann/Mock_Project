@@ -95,6 +95,7 @@ function uploadAvatar() {
     .then(function(resp){
         let imageUrl = resp.data;
         document.getElementById('imgUrl').value = imageUrl;
+        document.getElementById('image-add').innerHTML =`<img src="/static/img/${imageUrl}" alt="" width="100" height="100">`;
     })
     .catch(function(err){
         console.log(err)

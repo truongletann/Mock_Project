@@ -29,8 +29,8 @@ function loadLessonDetail() {
         }
         content += `
         <li>
-                                    <a class="btn btn-outline-info w-100" style="text-align: center;" href="../EleaningLayoutUser/quiz.html?id=${id}">QUIZ</a>
-                                </li>
+              <a class="btn btn-outline-info w-100" style="text-align: center;" href="../EleaningLayoutUser/quiz.html?id=${id}&userId=1">QUIZ</a>
+        </li>
         `;
         document.getElementById("list-content").innerHTML = content;
         document.getElementById("showVideo").innerHTML = `

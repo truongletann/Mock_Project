@@ -20,8 +20,8 @@ function getInfo() {
                 <td>${user.email}</td>
                 <td>${user.phone}</td>
                 <td>${user.status ===true ?
-                  '<h6 style ="text-align: center;border-radius: 2px;border: 1px solid #ddd; width: 65px; height: 30px;padding: 5px; margin-right: -12px;background-color: #fe9365;">Active</h6>' : 
-                  '<h6 style ="text-align: center;border-radius: 2px;border: 1px solid #ddd; width: 65px; height: 30px;padding: 5px; margin-right: -12px;background-color: #2196f3;" >Inactive</h6>'}
+                  '<h6 style ="text-align: center;border-radius: 2px;border: 1px solid #ddd; width: 65px; height: 30px;padding: 5px; margin-right: -12px;background-color: green; color: white">Active</h6>' : 
+                  '<h6 style ="text-align: center;border-radius: 2px;border: 1px solid #ddd; width: 65px; height: 30px;padding: 5px; margin-right: -12px;background-color: red; color: white" >Inactive</h6>'}
                </td>
                <td>
                    <a href="javascript:void(0)" class="btn btn-sm btn-danger btn-round py-1 font-weight-bold" onclick="remove(${user.user_id })">Delete</a>

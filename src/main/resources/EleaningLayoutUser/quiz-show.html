@@ -18,8 +18,8 @@
         }
 
     </style>
-</head>
 
+</head>
 
 
 <body>
@@ -27,22 +27,20 @@
         <div class="grid">
             <div class="row">
                 <div class="col l-12 header-quiz header">
-                    <div class="quiz-title-header">
+                    <div class="quiz-title-header" id="name-course">
                         <div class="quiz-msg">
-                            <h1 style="color: white">Lesson 1 Quiz</h1>
+                            <h1 style="color: white" >Lesson 1 Quiz</h1>
                         </div>
-                        <h3 class="text-title" style="color: white" id="count">Quiz 30 min</h3>
-                        <h3 class="due-date-1" style="color: white">Due date : Jul 12 , 1:59PM +07</h3>
+                        <h3 class="text-title" style="color: white">Quiz 30 min</h3>
                     </div>
                 </div>
                 <div class="col l-12">
                     <input type="hidden" id="numberQuestion">
                     <div class="wrapper-quiz-do">
-                      
                         <div class="wrapper-question" id="question-list">
                             <div class="content">
                                 <h5 class="question-number">1.</h5>
-                                <p class="question-content">
+                                <p class="question-content" >
                                     Which of the following is essential concept related to Cloud
                                     ?
                                 </p>
@@ -50,20 +48,20 @@
                             </div>
                             <ul class="content-list" >
                                 <li class="content-item">
-                                    <input type="checkbox" name="" id="" />
+                                    <input type="radio" name="" />
                                     <span>A The use of the word "cloud" makes reference to the two essential concepts
                                     </span>
                                 </li>
                                 <li class="content-item">
-                                    <input type="checkbox" name="" id="" />
+                                    <input type="radio" name=""  />
                                     <span>B All of the mentioned</span>
                                 </li>
                                 <li class="content-item">
-                                    <input type="checkbox" name="" id="" />
+                                    <input type="radio" name=""   />
                                     <span>C Cloud computing abstracts systems by pooling and sharing resources</span>
                                 </li>
                                 <li class="content-item">
-                                    <input type="checkbox" name="" id="" />
+                                    <input type="radio" name=""  />
                                     <span>D cloud computing is nothing more than the Internet </span>
                                 </li>
                             </ul>
@@ -73,25 +71,18 @@
                 </div>
             </div>
         </div>
-
     </div>
-<!-- <script>-->
-<!--    var count = 40 ;-->
-<!--var interval = setInterval(function(){-->
-<!--  document.getElementById('count').innerHTML=count;-->
-<!--  count&#45;&#45;;-->
-<!--  if (count === 0){-->
-<!--    clearInterval(interval);-->
-<!--    document.getElementById('count').innerHTML='Quiz Time Completed!';-->
-<!--    // or...-->
-<!--    alert("You're out of time!");-->
-<!--  }-->
-<!--}, 1000);-->
-<!--</script>-->
+
+
+
+
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../js/quiz/index.js"></script>
+<script src="./js/quiz/index.js"></script>
+
+
+
+
 </body>
-
-
 </html>

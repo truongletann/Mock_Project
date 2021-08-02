@@ -45,6 +45,7 @@ function loadCourse(){
             document.getElementById('hourCount').value = resp.data.time_do;
             document.getElementById('categoryId').value = resp.data.category_id;
             document.getElementById('imgUrl').value = resp.data.image;
+            document.getElementById('image-edit').innerHTML = `<img src="/static/img/${resp.data.image}" alt="" width="100" height="100">`;
             document.getElementById('useID').value = resp.data.user_id;
             document.getElementById('description').value = resp.data.description;
         })
@@ -123,6 +124,7 @@ function uploadAvatar() {
     .then(function(resp){
         let imageUrl = resp.data;
         document.getElementById('imgUrl').value = imageUrl;
+        document.getElementById('image-edit').innerHTML = `<img src="/static/img/${imageUrl}" alt="" width="100" height="100">`;
     })
     .catch(function(err){
         console.log(err)

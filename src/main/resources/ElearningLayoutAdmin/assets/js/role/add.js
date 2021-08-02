@@ -1,11 +1,9 @@
 
 function addRole() {
     // Lấy thông tin từ form
-    let name = document.getElementById('name').value;
     let desc = document.getElementById('desc').value;
 
     let role = {
-        "role_id": name,
         "role_name": desc
     }
     // Gọi api để thêm mới 

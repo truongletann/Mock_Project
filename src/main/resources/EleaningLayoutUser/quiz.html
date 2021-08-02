@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../EleaningLayoutUser/css/quiz.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/profile.css">
+
     <title>Quiz</title>
     <style>
         .header{
@@ -24,11 +27,39 @@
     </style>
 </head>
 <body>
+<header class="border-bottom">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Elearning</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse row" id="collapsibleNavId">
+            <div class="col-md-6">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-between">
+                </ul>
+            </div>
+            <div class="col-md-5 d-flex justify-content-end">
+                <div class="dropdown">
+                    <div class="dropdown-toggle font-weight-bold text-dark" data-toggle="dropdown">
+                        <img src="img/nodejs.jpg" height="40px" width="40px"  style="border-radius: 50%; margin-right: 6px">
+                        Group Huy
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <!--                            <a class="dropdown-item" href="course.html">My Course</a>-->
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
     <div class="wrapper-quiz">
                 <div class="col l-12 header">
-                    <section class="course-banner" id="titleCourse">
+                    <section  id="titleCourse">
                         <div class="container">
-                            <div class="banner-content" style="padding: 30px 0">
+                            <div class="banner-content" style="padding: 30px 0"  id="title">
                                 <h1 style="font-size: 4rem; font-weight: 500" >Name Coure Title </h1>
                                 <h5 style="font-size:1.4rem ;font-weight: 400">
                                    Description
@@ -39,17 +70,12 @@
                 </div>
                 <div class="col l-12" > 
                     <div class="quiz-content">
-                        <div class="quiz-title">
-                            <h5 class="text-title">Quiz 30 min</h5>
-                            <h1>Node Js Program  </h1>
-                        </div>
- 
                         <div class="quiz-info">
                             <div class="quiz-info-submit">
                                 <h3 class="grade-info" style="color:#17a2b8;font-weight: 600;">Submit your assignment</h3>
                                 <span class="due-date">Due date : Jul 12 , 1:59PM +07 </span>
                             </div>
-                            <a class="btn btn-info" style="padding: 3px 0;font-size: 2rem; color: #fff; font-weight: 400"  href="./quiz-show.html">Start</a>
+                            <a class="btn btn-info" style="padding: 3px 0;font-size: 2rem; color: #fff; font-weight: 400"  href="javascript:void(0)" onclick="QuizShow()">Start</a>
                         </div>
                         <div class="quiz-info-grade">
                             <div class="grade"> 
@@ -64,26 +90,24 @@
                            </div> 
                         </div>
                     </div>
-                    <h5 class="font-weight-bold " style="font-size: 2rem; margin-left: 600px; margin-bottom: 40px;">Submitted Assessments</h5>
+                    <h5 class="font-weight-bold " style="font-size: 2rem; margin-left: 600px; margin-bottom: 40px;"> Submitted Assessments </h5>
                     <table class="table table-striped">
                         <thead>
-                          <tr class="title-table">
+                          <tr class="title-table" >
                             <th scope="col">Title</th>
                             <th scope="col">Recorded Score</th>
                             <th scope="col">Feedback Available</th>
                             <th scope="col">Individual Score</th>
                             <th scope="col">Time</th>
-                            <th scope="col">Submitted</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr class="title-body">
-                            <th scope="row">Final Test Theory</th>
+                        <tbody id ="list-exam">>
+                          <tr class="title-body" >
+                            <td>Final Test Theory</td>
                             <td>100</td>
                             <td style="color: #17a2b8; font-weight: 400;">View Feedback</td>
                             <td>85</td>
                             <td>24 min 23 sec</td>
-                            <td>2021-05-14 10:00 AM</td>
                           </tr>
                         </tbody>
                       </table>
@@ -94,5 +118,6 @@
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/quiz/index.js"></script>
 </body>
 </html>
