@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface ExamDetailRepository extends JpaRepository<ExamDetail, Integer> {
 
-    @Query("FROM Exam WHERE exam_id =?1")
+    @Query("FROM ExamDetail WHERE exam_id =?1")
     List<ExamDetail> getExamDetailByID(int examID);
 }
