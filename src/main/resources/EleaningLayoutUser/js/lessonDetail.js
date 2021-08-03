@@ -4,7 +4,7 @@ let id = UrlParam.get("id");
 let listUserEnroll;
 function loadLessonDetail() {
     axios({
-      url: `http://localhost:8082/api/admin/course-detail/by-course/${id}`,
+      url: `http://localhost:8082/api/user/course-detail/by-course/${id}`,
       method: "get",
     })
       .then(function (resp) {

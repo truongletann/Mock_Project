@@ -17,7 +17,7 @@ function SearchCourse() {
                 content += `
             <div class="col-md-2" >
             <div class="course">
-            <img src="${course.image}" />
+            <img src="/static/img/${course.image}" />
             <h6 class="course-title">${course.title}</h6>
             <small class="course-content">
             ${course.description}
@@ -76,7 +76,7 @@ function SearchCourse1() {
                 content += `
             <div class="col-md-2" >
             <div class="course">
-            <img src="${course.image}" />
+            <img src="/static/img/${course.image}" />
             <h6 class="course-title">${course.title}</h6>
             <small class="course-content">
             ${course.description}

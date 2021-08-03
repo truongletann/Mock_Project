@@ -5,6 +5,7 @@ import com.mock.entity.User;
 import com.mock.repository.UserRepository;
 import com.mock.service.RoleService;
 import com.mock.service.UserService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,7 +85,7 @@ public class UserServiceImpl implements UserService {
                 userDTO.getUser_id(),
                 userRepository.findById(userDTO.getUser_id()).get().getEmail(),
                 userDTO.getFull_name(),
-                userDTO.getPassword(),
+                BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt()),
                 userDTO.getAvatar(),
                 userDTO.getPhone(),
                 userDTO.getAddress(),

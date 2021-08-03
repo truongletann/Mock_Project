@@ -14,7 +14,7 @@ function loadCourseDetail() {
           content += `
           <div class="col-md-3">
                     <button href="#" class="my-course-item">
-                        <img src="/static/img/${course.courseDTO.image}" alt="">
+                        <img src="/static/img/${course.courseDTO.image}" alt="" style="width: 220px; height: 150.66px">
                         <h6 class="my-course-title"> ${course.courseDTO.title} </h6>
                         <div class="my-course-desc">
                            ${course.courseDTO.description}

@@ -5,7 +5,7 @@ let userID = document.getElementById('userID').value;
 
 function loadCourseDetail() {
   axios({
-    url: `http://localhost:8082/api/admin/course-detail/by-course/${id}`,
+    url: `http://localhost:8082/api/user/course-detail/by-course/${id}`,
     method: "get",
   })
     .then(function (resp) {
@@ -33,7 +33,7 @@ loadCourseDetail();
 
 function loadTarget() {
   axios({
-    url: `http://localhost:8082/api/admin/target/by-course/${id}`,
+    url: `http://localhost:8082/api/user/target/by-course/${id}`,
     method: "GET",
     // headers: {
     //     "Authorization": `Bearer ${token}`
@@ -62,7 +62,7 @@ loadTarget();
 
 function loadCourse() {
   axios({
-    url: `http://localhost:8082/api/admin/course/${id}`,
+    url: `http://localhost:8082/api/user/course/${id}`,
     method: "GET",
     // headers: {
     //     "Authorization": `Bearer ${token}`

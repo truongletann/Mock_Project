@@ -107,10 +107,10 @@ function loadExam() {
                 <tr class="title-body">
                       <th scope="row">Final Quiz</th>
                             <td>${exam.grade}</td>
-                            <td style="color: #17a2b8; font-weight: 400;"> <a href="#">View Feedback</a></td>
+                            <td style="color: #17a2b8; font-weight: 400;"> <a href="../EleaningLayoutUser/view-feedback.html?id=${exam.exam_id}">View Feedback</a></td>
                             <td>${exam.grade}</td>
-                            <td>${exam.time_need}</td>
-                 </tr>           
+                      <td>${exam.time_need}</td>
+                </tr>           
                     `;
             }
             document.getElementById('list-exam').innerHTML = content;
@@ -148,7 +148,6 @@ function submitQuestion() {
         "user_id": 1
     }
 
-
     axios({
         url: 'http://localhost:8082/api/user/exam',
         method: 'POST',
@@ -166,13 +165,11 @@ function submitQuestion() {
             console.log(err.response);
             swal("Unsuccessfully !", "You clicked the button!", "error");
         })
-
-
-
-
 }
 
-
+function Cancel (){
+    window.location.href = `../EleaningLayoutUser/quiz.html?id=${id}&userId=1`;
+}
 
 
 
