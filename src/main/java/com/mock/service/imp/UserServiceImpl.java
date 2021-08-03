@@ -82,11 +82,14 @@ public class UserServiceImpl implements UserService {
         }
         User entity = new User(
                 userDTO.getUser_id(),
+                userRepository.findById(userDTO.getUser_id()).get().getEmail(),
                 userDTO.getFull_name(),
                 userDTO.getPassword(),
                 userDTO.getAvatar(),
                 userDTO.getPhone(),
-                userDTO.getAddress());
+                userDTO.getAddress(),
+                userRepository.findById(userDTO.getUser_id()).get().isStatus(),
+                userRepository.findById(userDTO.getUser_id()).get().getRole_id());
         userRepository.saveAndFlush(entity);
     }
 }
