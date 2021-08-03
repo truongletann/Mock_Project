@@ -20,7 +20,32 @@ public class UserCourseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("{name}")
+    @GetMapping("")
+    public Object get() {
+        try {
+            List<CourseDTO> listCourse = courseService.getAll();
+            return new ResponseEntity<Object>(listCourse, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
+
+    @GetMapping("{id}")
+    public Object getByID(@PathVariable int id) {
+        try {
+            CourseDTO courseDTO = courseService.getById(id);
+            return new ResponseEntity<Object>(courseDTO, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+
+        }
+    }
+
+    @GetMapping("/by-name/{name}")
     public Object get(@PathVariable String name) {
         try {
             List<CourseDTO> courseDTO = courseService.getByName(name);

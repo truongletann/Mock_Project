@@ -30,6 +30,7 @@ public class AdminTargetController {
 
         }
     }
+
     @GetMapping("{id}")
     public Object get(@PathVariable int id) {
         try {
