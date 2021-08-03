@@ -1,13 +1,13 @@
-// let token = localStorage.getItem('USER_TOKEN');
+let token = localStorage.getItem('USER_TOKEN');
 
 function loadCate() {
     // LẤY TOKEN TỪ LOCALSTORAGE
     axios({
         url: 'http://localhost:8082/api/admin/category',
         method: 'get',
-        // headers: {
-        //     "Authorization": `Bearer ${token}`
-        // }
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
     })
     .then(function(resp) {
         let listCate = resp.data;
@@ -29,13 +29,17 @@ function loadCate() {
         document.getElementById('tBodyCate').innerHTML = content;
     })
     .catch(function(err){
-        // let data = err.response.data;
-        // if(data.status == 401){
-        //     alert('Chưa đăng nhập!')
-        // }
-        // else if(data.status == 403){
-        //     alert('Không có quyền truy cập!')
-        // }
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }
     })
 }
 
@@ -54,9 +58,9 @@ function remove(id){
             axios({
                 url: `http://localhost:8082/api/admin/category/${id}`,
                 method: 'delete',
-                // headers: {
-                //     "Authorization": `Bearer ${token}`
-                // }
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
             })
             .then(function(resp){
                 swal("Successful !", "You clicked the button!", "success").then(function(resp){

@@ -1,5 +1,5 @@
 // LẤY TOKEN TỪ LOCALSTORAGE
-// let token = localStorage.getItem('USER_TOKEN');
+let token = localStorage.getItem('USER_TOKEN');
 
 function save() {
 
@@ -13,10 +13,10 @@ function save() {
         axios({
             url: 'http://localhost:8082/api/admin/category',
             method: 'POST',
-            data: cate
-            // headers: {
-            //     "Authorization": `Bearer ${token}`
-            // }
+            data: cate,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
         })
             .then(function (resp) {
                 swal("Successfully !", "You clicked the button!", "success").then(function(resp){
@@ -24,8 +24,20 @@ function save() {
                 })
             })
             .catch(function (err) {
-                console.log(err.response);
-                swal("Unsuccessfully !", "You clicked the button!", "error");
+                let data = err.response.data;
+                if(data.status == 401){
+                    document.location.href = "./login.html";
+                }
+                else if(data.status == 403){
+                    if(token != null){
+                        // XÓA TOKEN KHỎI LOCALSTORAGE
+                        localStorage.removeItem('USER_TOKEN');
+                        document.location.href = "./login.html";
+                    }
+                }else{
+                    swal("Unsuccessfully !", "You clicked the button!", "error");
+                }
+
             })
     
 }

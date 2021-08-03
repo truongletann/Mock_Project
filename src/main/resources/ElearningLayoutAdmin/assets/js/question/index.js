@@ -1,3 +1,4 @@
+let token = localStorage.getItem('USER_TOKEN');
 
 let urlParam = new URLSearchParams(window.location.search);
 let id = urlParam.get('id');
@@ -6,6 +7,9 @@ function loadQuestion() {
   axios({
     url: `http://localhost:8082/api/admin/question/by-course/${id}`,
     method: 'get',
+      headers: {
+          "Authorization": `Bearer ${token}`
+      }
   })
     .then(function (resp) {
       let listQuestion = resp.data;
@@ -48,7 +52,17 @@ function loadQuestion() {
       document.getElementById("tbodyQuestion").innerHTML = content;
     })
     .catch(function (err) {
-      console.log(err);
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }
     });
 }
 
@@ -67,9 +81,9 @@ function removeQuestion(questionID) {
       axios({
         url: `http://localhost:8082/api/admin/question/${questionID}`,
         method: "delete",
-        // headers: {
-        //     "Authorization": `Bearer ${token}`
-        // }
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
       })
         .then(function (resp) {
            

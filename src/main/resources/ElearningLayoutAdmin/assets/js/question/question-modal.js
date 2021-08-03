@@ -1,8 +1,12 @@
+let token = localStorage.getItem('USER_TOKEN');
 
 function loadCourse() {
     axios({
         url: 'http://localhost:8082/api/admin/course',
-        method: 'get',   
+        method: 'get',
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
     })
     .then(function(resp) {
         let listCourse = resp.data;
@@ -16,7 +20,17 @@ function loadCourse() {
         document.getElementById('categoryId').innerHTML = options;
     })
     .catch(function(err){
-        console.log(err)
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }
     })
 }
 

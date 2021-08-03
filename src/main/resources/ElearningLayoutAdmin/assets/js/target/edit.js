@@ -1,4 +1,4 @@
-// let token = localStorage.getItem('USER_TOKEN');
+let token = localStorage.getItem('USER_TOKEN');
 let url_str = window.location.href;
 let url = new URL(url_str);
 let id = url.searchParams.get('id');
@@ -7,16 +7,26 @@ function loadTarget(){
     axios({
         url:`http://localhost:8082/api/admin/target/${id}`,
         method:'get',
-        // headers:{
-        //     "Authorization":`Bearer ${token}`
-        // }
+        headers:{
+            "Authorization":`Bearer ${token}`
+        }
     })
     .then(function(resp){
         document.getElementById('title').value = resp.data.target_title;
         document.getElementById('courseID').value = resp.data.course_id;
     })
     .catch(function(err){
-        console.log(err)
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }
     })
 }
 
@@ -38,9 +48,9 @@ function editTarget(){
         url:'http://localhost:8082/api/admin/target',
         method:'put',
         data:role,
-        // headers:{
-        //     "Authorization":`Bearer ${token}`
-        // }
+        headers:{
+            "Authorization":`Bearer ${token}`
+        }
     })
     .then(function(resp){
         swal("Successful !", "You clicked the button!", "success").then(resp =>{
@@ -49,8 +59,20 @@ function editTarget(){
        
     })
     .catch(function(err){
-        console.log(err)
-        swal("Unsuccessful !", "You clicked the button!", "error")
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }{
+            swal("Unsuccessful !", "You clicked the button!", "error")
+        }
+
     })
 }
 

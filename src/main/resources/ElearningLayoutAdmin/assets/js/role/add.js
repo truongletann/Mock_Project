@@ -1,3 +1,4 @@
+let token = localStorage.getItem('USER_TOKEN');
 
 function addRole() {
     // Lấy thông tin từ form
@@ -11,9 +12,9 @@ function addRole() {
         url: 'http://localhost:8082/api/admin/role',
         method: 'POST',
         data: role,
-        // headers: {
-        //     "Authorization":`Bearer ${token}`
-        // }
+        headers: {
+            "Authorization":`Bearer ${token}`
+        }
     })
     .then(function (response) { // Xử lý response trả về
         console.log(response);
@@ -22,7 +23,19 @@ function addRole() {
         })
     })
     .catch(function (error) { // Xử lý error trả về
-        console.log(error);
-        swal("Unsuccessfully", "Add New Failure", "error");
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }else{
+            swal("Unsuccessfully", "Add New Failure", "error");
+        }
+
     })
 }

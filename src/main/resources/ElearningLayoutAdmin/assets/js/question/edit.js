@@ -1,3 +1,4 @@
+let token = localStorage.getItem('USER_TOKEN');
 
 // lay param tren thanh url 
  let urlParam = new URLSearchParams(window.location.search);
@@ -6,7 +7,10 @@
 function loadAnswer() {
   axios({
     url: `http://localhost:8082/api/admin/question/${id}`,
-    method: "GET"
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
   })
     .then(function(res) {
       document.getElementById("title").value = res.data.question_content;
@@ -30,8 +34,20 @@ function loadAnswer() {
     document.getElementById('correctAnswer').options[check - 1].selected = 'selected';  
     })
     .catch((err) => {
-      console.log(err);
-      swal("Unsuccessfull !", "You clicked the button!", "error");
+      let data = err.response.data;
+      if(data.status == 401){
+        document.location.href = "./login.html";
+      }
+      else if(data.status == 403){
+        if(token != null){
+          // XÓA TOKEN KHỎI LOCALSTORAGE
+          localStorage.removeItem('USER_TOKEN');
+          document.location.href = "./login.html";
+        }
+      }else{
+        swal("Unsuccessfull !", "You clicked the button!", "error");
+      }
+
     });
 }
 
@@ -89,6 +105,9 @@ function EditQuestion() {
     url: "http://localhost:8082/api/admin/question",
     method: "PUT",
     data: question,
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
   })
     .then((res) => {
       swal("Successful !", "You clicked the button!", "success").then(res =>{

@@ -1,5 +1,5 @@
 // LẤY TOKEN TỪ LOCALSTORAGE
-// let token = localStorage.getItem('USER_TOKEN');
+let token = localStorage.getItem('USER_TOKEN');
 let url_str = window.location.href;
 let url = new URL(url_str);
 let id = url.searchParams.get('id');
@@ -8,9 +8,9 @@ function loadCategory() {
     axios({
         url: 'http://localhost:8082/api/admin/category',
         method: 'GET',
-        // headers: {
-        //     "Authorization": `Bearer ${token}`
-        // }
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
     })
         .then(function (resp) {
             //  Lấy ra mảng role
@@ -26,7 +26,17 @@ function loadCategory() {
             roleIdTag.innerHTML = strOption;
         })
         .catch(function (err) {
-            console.log(err.response);
+            let data = err.response.data;
+            if(data.status == 401){
+                document.location.href = "./login.html";
+            }
+            else if(data.status == 403){
+                if(token != null){
+                    // XÓA TOKEN KHỎI LOCALSTORAGE
+                    localStorage.removeItem('USER_TOKEN');
+                    document.location.href = "./login.html";
+                }
+            }
         })
 }
 loadCategory();
@@ -35,9 +45,9 @@ function loadCourse(){
     axios({
         url: `http://localhost:8082/api/admin/course/${id}`,
         method: 'GET',
-        // headers: {
-        //     "Authorization": `Bearer ${token}`
-        // }
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
     })
         .then(function (resp) {
             document.getElementById('title').value = resp.data.title;
@@ -46,11 +56,20 @@ function loadCourse(){
             document.getElementById('categoryId').value = resp.data.category_id;
             document.getElementById('imgUrl').value = resp.data.image;
             document.getElementById('image-edit').innerHTML = `<img src="/static/img/${resp.data.image}" alt="" width="100" height="100">`;
-            document.getElementById('useID').value = resp.data.user_id;
             document.getElementById('description').value = resp.data.description;
         })
         .catch(function (err) {
-            console.log(err.response);
+            let data = err.response.data;
+            if(data.status == 401){
+                document.location.href = "./login.html";
+            }
+            else if(data.status == 403){
+                if(token != null){
+                    // XÓA TOKEN KHỎI LOCALSTORAGE
+                    localStorage.removeItem('USER_TOKEN');
+                    document.location.href = "./login.html";
+                }
+            }
         })
 }
 
@@ -89,9 +108,9 @@ function save() {
             url: 'http://localhost:8082/api/admin/course',
             method: 'PUT',
             data: course,
-            // headers: {
-            //     "Authorization": `Bearer ${token}`
-            // }
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
         })
             .then(function (resp) {
                 swal("Successfull !", "You clicked the button!", "success").then(function(resp){
@@ -100,8 +119,20 @@ function save() {
                 
             })
             .catch(function (err) {
-                console.log(err.response);
-                swal("Unsuccessfull !", "You clicked the button!", "error");
+                let data = err.response.data;
+                if(data.status == 401){
+                    document.location.href = "./login.html";
+                }
+                else if(data.status == 403){
+                    if(token != null){
+                        // XÓA TOKEN KHỎI LOCALSTORAGE
+                        localStorage.removeItem('USER_TOKEN');
+                        document.location.href = "./login.html";
+                    }
+                }else{
+                    swal("Unsuccessfull !", "You clicked the button!", "error");
+                }
+
             })
     }
 }
@@ -118,7 +149,7 @@ function uploadAvatar() {
         data: formData,
         headers: {
             'Content-Type': 'multipart/form-data',
-            // "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(function(resp){

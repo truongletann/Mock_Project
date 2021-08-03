@@ -1,11 +1,12 @@
+let token = localStorage.getItem('USER_TOKEN');
+
 function getInfo() {
-    // let token = localStorage.getItem('USER_TOKEN');
     axios({
         url:`http://localhost:8082/api/admin/user`,
         method: 'get',
-        // headers: {
-        //     "Authorization": `Bearer ${token}`
-        // }
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
     })
     .then(function(resp){
         let content = '';
@@ -35,15 +36,17 @@ function getInfo() {
         document.getElementById('tBody').innerHTML = content;
     })
     .catch(function(err){
-        console.log(err)
-        // let data = err.response.data;
-
-        // if(data.status==401){
-        //     // window.location.href = "/login.html";
-        // }
-        // else if(data.status==403){
-        //     alert('not have access !')
-        // }
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }
     })
 }
 
@@ -65,9 +68,9 @@ function remove(id){
       axios({
           url:`http://localhost:8082/api/admin/user/delete/${id}`,
           method: 'put',
-          // headers: {
-          //     'Authorization': `Bearer ${token}`
-          // }
+          headers: {
+              'Authorization': `Bearer ${token}`
+          }
       })
       .then(function(resp){
           getInfo();
@@ -96,9 +99,9 @@ function active(id){
       axios({
           url:`http://localhost:8082/api/admin/user/active/${id}`,
           method: 'put',
-          // headers: {
-          //     'Authorization': `Bearer ${token}`
-          // }
+          headers: {
+              'Authorization': `Bearer ${token}`
+          }
       })
       .then(function(resp){
           getInfo();

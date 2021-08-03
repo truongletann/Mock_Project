@@ -1,8 +1,12 @@
+let token = localStorage.getItem('USER_TOKEN');
 
 function loadRoleData() {
     axios({
         url: 'http://localhost:8082/api/admin/role',
-        method: 'get',   
+        method: 'get',
+        headers: {
+            "Authorization":`Bearer ${token}`
+        }
     })
     .then(function(resp) {
         let listRole = resp.data;
@@ -25,7 +29,17 @@ function loadRoleData() {
         document.getElementById('tbodyRole').innerHTML = content;
     })
     .catch(function(err){
-        console.log(err)
+        let data = err.response.data;
+        if(data.status == 401){
+            document.location.href = "./login.html";
+        }
+        else if(data.status == 403){
+            if(token != null){
+                // XÓA TOKEN KHỎI LOCALSTORAGE
+                localStorage.removeItem('USER_TOKEN');
+                document.location.href = "./login.html";
+            }
+        }
     })
 }
 
@@ -45,7 +59,9 @@ function remove(id){
             axios({
                 url: `http://localhost:8082/api/admin/role/${id}`,
                 method: 'delete',
-              
+                headers: {
+                    "Authorization":`Bearer ${token}`
+                }
             })
             .then(function(resp){
                 swal("Successfull !", "You clicked the button!", "success").then(function(resp){
