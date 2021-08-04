@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user/exam-detail")
+@RequestMapping("/api/userau/exam-detail")
 public class UserExamDetailController {
 
     @Autowired

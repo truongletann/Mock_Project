@@ -93,4 +93,19 @@ public class UserServiceImpl implements UserService {
                 userRepository.findById(userDTO.getUser_id()).get().getRole_id());
         userRepository.saveAndFlush(entity);
     }
+
+    @Override
+    public void save(UserDTO userDTO) {
+        if(userDTO == null){
+            return;
+        }
+        User entity = new User(
+                userDTO.getEmail(),
+                userDTO.getFull_name(),
+                BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt()),
+                true,
+                2);
+        userRepository.save(entity);
+
+    }
 }

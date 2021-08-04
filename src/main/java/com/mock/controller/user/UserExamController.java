@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user/exam")
+@RequestMapping("/api/userau/exam")
 public class UserExamController {
 
     @Autowired

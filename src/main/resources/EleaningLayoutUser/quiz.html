@@ -14,7 +14,7 @@
         .header{
             background: linear-gradient(#29303B,#29303B,#29303B);
             color: #fff;
-            box-shadow: inset 0 -1px 5px rgb(0 0 0 / 10%);
+            box-shadow: inset 0 -1px 5px rgb(0 0 0 );
             min-height: 3.5em;
             min-height: 150px;
         }
@@ -38,14 +38,14 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-between">
                 </ul>
             </div>
-            <div class="col-md-5 d-flex justify-content-end">
+            <div class="col-md-5 d-flex justify-content-end" id="divSign" >
                 <div class="dropdown">
-                    <div class="dropdown-toggle font-weight-bold text-dark" data-toggle="dropdown">
+                    <div class="dropdown-toggle  text-dark" data-toggle="dropdown" style="font-size: 1.4rem; font-weight: 350">
                         <img src="img/nodejs.jpg" height="40px" width="40px"  style="border-radius: 50%; margin-right: 6px">
                         Group Huy
                     </div>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <div class="dropdown-menu dropdown-menu-right" style="font-size: 1.5em; margin: 4px 10px">
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="Profile()">My Profile</a>
                                                     <a class="dropdown-item" href="course.html">My Course</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Log Out</a>
@@ -119,5 +119,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/quiz/index.js"></script>
+<!--    <script src="js/auth/login.js"></script>-->
 </body>
 </html>

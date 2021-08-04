@@ -20,6 +20,6 @@ public interface UserService {
 
     void edit(UserDTO userDTO);
 
-//    void save(UserDTO userDTO);
+    void save(UserDTO userDTO);
 
 }

@@ -44,10 +44,10 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors();
         http.csrf().disable()
-                .antMatcher("/api/**").authorizeRequests()
-                .antMatchers("/api/admin/auth").permitAll()
+                .antMatcher("/apii/**").authorizeRequests()
+                .antMatchers("/api/admin/auth/**","/api/user/auth/**","/api/user/**").permitAll()
                 .antMatchers("/api/admin/**").hasAnyAuthority("AD")
-                .antMatchers("/api/user/**").hasAnyAuthority("US")
+                .antMatchers("/api/userau/**").hasAnyAuthority("US")
                 .anyRequest().authenticated();
 
         http.addFilter(new AuthFilter(authenticationManager(),userDetailService));

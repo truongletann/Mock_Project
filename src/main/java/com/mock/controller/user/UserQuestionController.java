@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user/question")
+@RequestMapping("/api/userau/question")
 public class UserQuestionController {
 
     @Autowired

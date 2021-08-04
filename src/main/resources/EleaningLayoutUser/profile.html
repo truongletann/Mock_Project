@@ -28,13 +28,14 @@
                     </ul>
                 </div>
 
-                <div class="col-md-5 d-flex justify-content-end">
+                <div class="col-md-5 d-flex justify-content-end" id="divSign" >
                     <div class="dropdown">
                         <div class="dropdown-toggle font-weight-bold text-dark" data-toggle="dropdown">
-                          Group 
+                            <img src="img/banner.jpg" height="40px" width="40px"  style="border-radius: 50%; margin-right: 6px">
+                            Group Huy
                         </div>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="profile.html">My Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="Profile()">My Profile</a>
                             <a class="dropdown-item" href="course.html">My Course</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Log Out</a>
@@ -93,7 +94,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>PassWord</label>
-                                        <input type="text" id="password" class="form-control" />
+                                        <input type="password" id="password" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Address</label>
@@ -118,17 +119,14 @@
         <span>Copyright © 2021 Group Huy, Inc.</span>
     </footer>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
     <script src="./lib/jquery/jquery.slim.min.js"></script>
     <script src="./lib/popper.js/popper.min.js"></script>
     <script src="./lib/bootstrap/bootstrap.min.js"></script>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="./js/profile.js"></script>
-    <script src="./js/quiz/index.js"></script>
+    <script src="js/user/profile.js"></script>
+    <script src="js/auth/login.js"></script>
 </body>
 
 </html>

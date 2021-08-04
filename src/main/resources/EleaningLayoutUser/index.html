@@ -1,6 +1,5 @@
 ﻿<!doctype html>
 <html lang="en">
-
 <head>
     <title>Home Page</title>
     <!-- Required meta tags -->
@@ -30,7 +29,7 @@
                                 <i class="fa fa-th"></i>
                                 <span class="ml-2">Categories</span>
                             </a>
-                            <div class="dropdown-menu" id="list-category">
+                            <div class="dropdown-menu" id="list-category" onclick="SearchCourseCategory()">
                                 <a class="dropdown-item" href="#">
                                     <i class="fa fa-laptop mr-1"></i>
                                     <span>Development</span>
@@ -70,13 +69,13 @@
                         <form id="my-form" class="input-group nav-search" >
                             <input type="text" id="search" class="form-control " placeholder="Search courses">
                             <div class="input-group-append">
-                                <button class="btn bg-white text-danger" type="submit" onclick="SearchCourse()"><i class="fa fa-search"></i></button>
+                                <button class="btn bg-white text-danger" type="submit" onclick="SearchCourse()">Search</i></button>
                             </div>
                         </form>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-5 text-right">
+            <div class="col-md-5 text-right" id="divSign">
                 <button class="btn btn-outline-secondary" data-toggle="modal"
                         data-target="#loginModal">Login</button>
                 <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#signUpModal">Sign up</button>
@@ -145,7 +144,7 @@
         <div class="row" id="hot-course">
             <div class="col-md-2">
                 <div class="course">
-                    <img src="./img/html-css.jpg" />
+                    <img src="./img/html-css.jpg" alt="" />
                     <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                     <small class="course-content">
                         Become an ethical hacker that can hack computer systems like black hat hackers and secure
@@ -180,7 +179,7 @@
             </div>
             <div class="col-md-2">
                 <div class="course">
-                    <img src="./img/html-css.jpg" />
+                    <img src="./img/html-css.jpg" alt="" />
                     <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                     <small class="course-content">
                         Become an ethical hacker that can hack computer systems like black hat hackers and secure
@@ -190,10 +189,8 @@
                         <span>1.200.000 đ</span>
                     </div>
                     <div class="course-overlay">
-                        <a href="#details.html>
-                        <h6 class="course-title">
-                        Complete Digital Marketing Course - 12 Courses in 1
-                        </h6>
+                        <a href="./details.html >
+                        <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                         <div class="course-author">
                             <b>Lê Quang Song</b>
                             <span class="mx-1"> | </span>
@@ -215,7 +212,7 @@
             </div>
             <div class="col-md-2">
                 <div class="course">
-                    <img src="./img/html-css.jpg" />
+                    <img src="./img/html-css.jpg" alt="" />
                     <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                     <small class="course-content">
                         Become an ethical hacker that can hack computer systems like black hat hackers and secure
@@ -250,7 +247,7 @@
             </div>
             <div class="col-md-2">
                 <div class="course">
-                    <img src="./img/html-css.jpg" />
+                    <img src="./img/html-css.jpg" alt="" />
                     <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                     <small class="course-content">
                         Become an ethical hacker that can hack computer systems like black hat hackers and secure
@@ -285,7 +282,7 @@
             </div>
             <div class="col-md-2">
                 <div class="course">
-                    <img src="./img/html-css.jpg" />
+                    <img src="./img/html-css.jpg" alt="" />
                     <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                     <small class="course-content">
                         Become an ethical hacker that can hack computer systems like black hat hackers and secure
@@ -320,7 +317,7 @@
             </div>
             <div class="col-md-2">
                 <div class="course">
-                    <img src="./img/html-css.jpg" />
+                    <img src="./img/html-css.jpg" alt="" />
                     <h6 class="course-title">The Complete Digital Marketing Course - 12 Courses in 1</h6>
                     <small class="course-content">
                         Become an ethical hacker that can hack computer systems like black hat hackers and secure
@@ -384,7 +381,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="login()">Login</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
 
@@ -447,10 +444,18 @@
 <!-- Axios , swal -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!--Load Course Index-->
 <script src="./js/course/index.js"></script>
-<script src="./js/course/detail-course.js"></script>
-<script src="./js/course/category.js"></script>
-<script src="./js/course/search.js"></script>
+
+<!--Category Course -->
+<script src="js/category/category.js"></script>
+
+<!--Search Course-->
+<script src="js/search/search.js"></script>
+<!--Auth login-->
+<script src="js/auth/login.js"></script>
+<!-- show  category and search category ra course  -->
 <script>
 
     $(function() {
@@ -461,7 +466,6 @@
 
 </script>
 <script>
-
     $(function() {
         $('#my-form1').on("submit",function(e) {
             e.preventDefault();
@@ -469,5 +473,4 @@
     });
 </script>
 </body>
-
 </html>

@@ -1,10 +1,13 @@
 let urlParam = new URLSearchParams(window.location.search);
 let id = urlParam.get("id");
-
+let token = localStorage.getItem('USER_TOKEN');
 function loadQuestion() {
     axios({
         url: `http://localhost:8082/api/user/question/${id}`,
         method: "get",
+        // headers: {
+        //     "Authorization": `Bearer ${token}`
+        // }
     })
         .then(function (resp) {
             let listQuestion = resp.data;
@@ -47,7 +50,17 @@ function loadQuestion() {
             document.getElementById("question-list").innerHTML = content;
         })
         .catch(function (err) {
-            console.log(err);
+            // let data = err.response.data;
+            // if(data.status == 401){
+            //     document.location.href = "../EleaningLayout/index.html";
+            // }
+            // else if(data.status == 403){
+            //     if(token != null){
+            //         // XÓA TOKEN KHỎI LOCALSTORAGE
+            //         localStorage.removeItem('USER_TOKEN');
+            //         document.location.href = "../EleaningLayout/index.html";
+            //     }
+            // }
         });
 }
 
@@ -57,6 +70,9 @@ function loadCourse() {
     axios({
         url: `http://localhost:8082/api/admin/course/${id}`,
         method: "get",
+        // headers: {
+        //     "Authorization": `Bearer ${token}`
+        // }
     })
         .then(function (resp) {
             document.getElementById('name-course').innerHTML = `<div class="quiz-msg">
@@ -70,6 +86,17 @@ function loadCourse() {
         })
         .catch(function (err) {
             console.log(err);
+            // let data = err.response.data;
+            // if(data.status == 401){
+            //     document.location.href = "../EleaningLayout/index.html";
+            // }
+            // else if(data.status == 403){
+            //     if(token != null){
+            //         // XÓA TOKEN KHỎI LOCALSTORAGE
+            //         localStorage.removeItem('USER_TOKEN');
+            //         document.location.href = "../EleaningLayout/index.html";
+            //     }
+            // }
         });
 }
 
@@ -79,6 +106,9 @@ function loadTitleQuiz() {
     axios({
         url: `http://localhost:8082/api/admin/course/${id}`,
         method: "get",
+        // headers: {
+        //     "Authorization": `Bearer ${token}`
+        // }
     })
         .then(function (resp) {
             document.getElementById('title').innerHTML = `
@@ -89,6 +119,17 @@ function loadTitleQuiz() {
         })
         .catch(function (err) {
             console.log(err);
+            // let data = err.response.data;
+            // if(data.status == 401){
+            //     document.location.href = "../EleaningLayout/index.html";
+            // }
+            // else if(data.status == 403){
+            //     if(token != null){
+            //         // XÓA TOKEN KHỎI LOCALSTORAGE
+            //         localStorage.removeItem('USER_TOKEN');
+            //         document.location.href = "../EleaningLayout/index.html";
+            //     }
+            // }
         });
 }
 
@@ -98,6 +139,9 @@ function loadExam() {
     axios({
         url: ` http://localhost:8082/api/user/exam/check/1/${id}`,
         method: "get",
+        // headers: {
+        //     "Authorization": `Bearer ${token}`
+        // }
     })
         .then(function (resp) {
             let listExam = resp.data;
@@ -117,6 +161,17 @@ function loadExam() {
         })
         .catch(err => {
             console.log(err);
+            // let data = err.response.data;
+            // if(data.status == 401){
+            //     document.location.href = "../EleaningLayout/index.html";
+            // }
+            // else if(data.status == 403){
+            //     if(token != null){
+            //         // XÓA TOKEN KHỎI LOCALSTORAGE
+            //         localStorage.removeItem('USER_TOKEN');
+            //         document.location.href = "../EleaningLayout/index.html";
+            //     }
+            // }
         });
 }
 loadExam();
@@ -151,7 +206,7 @@ function submitQuestion() {
     axios({
         url: 'http://localhost:8082/api/user/exam',
         method: 'POST',
-        data: examDetailDTO
+        data: examDetailDTO,
         // headers: {
         //     "Authorization": `Bearer ${token}`
         // }
